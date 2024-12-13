@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("/bannerblur.gif");
+  font-family: "Poppins";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-card {
+  width: 550px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 4px solid #004080;
+  border-radius: 25px 0 0 25px;
+  box-shadow: 0 0 10px #003366, 0 0 20px #002244 inset;
+  display: flex;
+  position: relative;
+  justify-content: flex-start; /* Alinha os itens à esquerda */
+  align-items: flex-start; /* Alinha os itens ao topo */
+  flex-wrap: wrap;
+  color: white;
+  padding: 10px;
+  max-height: 750px; /* Você já tem isso duas vezes, pode remover o anterior */
+  overflow: auto;
+  z-index: 1; /* Alterado de -1 para 1 */
+}
+
+.select-card::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem */
+}
+
+.select-card::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2); /* Cor do fundo da barra */
+  border-radius: 6px; /* Arredondamento do fundo */
+}
+
+.select-card::-webkit-scrollbar-thumb {
+  background: #004080; /* Cor da parte deslizante (azul escuro) */
+  border-radius: 6px; /* Arredondamento do polegar */
+  border: 3px solid rgba(255, 255, 255, 0.4); /* Adiciona um contorno */
+}
+
+.select-card::-webkit-scrollbar-thumb:hover {
+  background: #0059b3; /* Azul mais claro ao passar o mouse */
+}
+
+.select-card .item {
+  width: 160px;
+  height: 160px;
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  z-index: 4;
+  border-radius: 15px;
+  border: 2px solid #dadbd6;
+}
+
+.select-card .item img {
+  width: 100px;
+  transform: scale(1.5);
+}
+
+.player-card {
+  width: 650px;
+  background-color: #0066cc;
+  border: 4px solid #004080;
+  border-radius: 25px;
+  box-shadow: 0 0 10px #003366, 0 0 20px #002244 inset;
+  position: relative;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-header img {
+  position: absolute;
+  top: 50px;
+  z-index: 2;
+  width: auto;
+  height: 95px;
+}
+
+.close-button img {
+  width: 50px;
+  height: 50px;
+  top: 20px;
+  right: 15px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.player-image {
+  position: relative;
+  width: 620px;
+  height: 650px;
+}
+
+.player-image .attachs {
+  width: 700px;
+  position: absolute;
+  height: 650px;
+}
+
+.player-image .attachs .bigas, .player-image .attachs .glasses, .player-image .attachs .hair {
+  position: absolute;
+}
+
+.player-image .attachs .bigas img, .player-image .attachs .glasses img, .player-image .attachs .hair img{
+  width: 700px;
+  height: 650px;
+}
+
+
+.player-image .chillguy img, .chillguy  {
+  z-index: 0;
+  width: 700px;
+  height: 650px;
+
+}
+
+.coin-stamp p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.coin-stamp span {
+  font-weight: bold;
+  color: gold;
+}
+
+.coin-stamp p:last-child span {
+  color: #00ccff;
+}
+.member-badge {
+  z-index: 3;
+  width: 100%;
+}
+
+.member-badge h1 {
+  color: black;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 38px;
+}
+
+.player-image {
+  /* background: url("/img/background/1.png") no-repeat; */
+  border-radius: 25px;
+  background-size: 100% 100%;
+}
+
+.player-card .buttons{
+  margin: 20px;
+}
+
+
+
+.mystery-button {  
+  background-color: #053666;
+  border: 4px solid #004080;
+  border-radius: 25px;
+  box-shadow: 0 0 10px #003366, 0 0 20px #002244 inset;
+  color: white;  
+  border: none;  
+  border-radius: 8px;  
+  padding: 15px 25px;  
+  font-size: 15px;  
+  cursor: pointer;  
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);  
+  transition: transform 0.2s ease, box-shadow 0.2s ease;  
+  text-align: center;  
+  font-family: 'Poppins', sans-serif;  
+  background-size: 55px 55px;  
+  backdrop-filter: blur(5px);  
+}  
+
+.mystery-button:hover {  
+  animation: vibrate 0.1s infinite;  
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);  
+  transform: scale(1.05);  
+}  
+
+.mystery-button:active {  
+  transform: scale(0.95);  
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);  
+}  
+
+@keyframes vibrate {  
+  0% { transform: translate(1px, 1px); }  
+  25% { transform: translate(-1px, -2px); }  
+  50% { transform: translate(-3px, 0px); }  
+  75% { transform: translate(2px, 2px); }  
+  100% { transform: translate(0px, 0px); }  
+}
+
+.jelly-button {  
+  background-color: #053666;
+  border: 4px solid #004080;
+  border-radius: 25px;
+  box-shadow: 0 0 10px #003366, 0 0 20px #002244 inset;
+  color: white;  
+  border: none;  
+  border-radius: 8px;  
+  padding: 15px 25px;  
+  font-size: 15px;  
+  cursor: pointer;  
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);  
+  transition: transform 0.2s ease, box-shadow 0.2s ease;  
+  text-align: center;  
+  font-family: 'Poppins', sans-serif;  
+  background-size: 55px 55px;  
+  backdrop-filter: blur(5px);  
+  transition: all 0.2s ease-in-out;  
+  animation: wobble 1s infinite alternate;  
+  margin-left: 15px;
+}  
+
+
+.reset{
+    background-color: #053666;
+    border: 4px solid #004080;
+    border-radius: 25px;
+    box-shadow: 0 0 10px #003366, 0 0 20px #002244 inset;
+    color: white;  
+    border: none;  
+    border-radius: 8px;  
+    padding: 15px 25px;  
+    font-size: 15px;  
+    cursor: pointer;  
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);  
+    transition: transform 0.2s ease, box-shadow 0.2s ease;  
+    text-align: center;  
+    font-family: 'Poppins', sans-serif;  
+    background-size: 55px 55px;  
+    backdrop-filter: blur(5px);  
+    transition: all 0.2s ease-in-out;  
+    margin-right: 15px;
+  
+}
+
+.jelly-button:active {  
+  transform: scale(0.95);  
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);  
+  animation: none;  
+}  
+
+@keyframes wobble {  
+  0% { transform: translate(0); }  
+  100% { transform: translate(-5px, -5px) rotate(-3deg); }  
+}
+
+
+.icons{
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.item-social{
+  margin-top: 20px;
+}
+
+.item-social a{
+  color:#dadbd6;
+  text-decoration: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.item-social a svg{
+  margin-right: 5px;
+  font-size: 35px;
+  position: relative;
+}
+
+
+
+.ca button{
+  font-weight: 400;
+  font-size: 17px;
+  color:#0066cc;
+  cursor: pointer;
+  background-color: #dadbd6;
+  border: 4px solid #dadbd6;
+  font-family: "Poppins";
+  margin: 10px;
+  padding: 0 15px ;
+}
