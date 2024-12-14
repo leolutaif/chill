@@ -10,7 +10,7 @@ function App() {
     bigas: null,
     glasses: null,
     hair: null,
-    background: "/img/background/1.png", // Valor padrão inicial
+    background: null, // Agora começa sem nenhum background
   });
   const [tokenName, setTokenName] = useState("");
   const [telegramLink, setTelegramLink] = useState("");
@@ -41,11 +41,7 @@ function App() {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
-  console.log(tokenName);
-  console.log(telegramLink);
-  console.log(twitterLink);
-  console.log(tokenCA);
-  console.log(pumpLink);
+
   const items = {
     bigas: [
       "/img/bigas/1.png",
@@ -70,25 +66,25 @@ function App() {
       "/img/background/2.png",
       "/img/background/3.png",
       "/img/background/4.png",
+      "/img/background/5.png", // Novo background
+      "/img/background/6.png", // Novo background
     ],
   };
 
-  // Atualiza o item selecionado
   const updateSelectedItem = (category, item) => {
     setSelectedItems((prev) => ({ ...prev, [category]: item }));
   };
 
-  // Função para resetar as escolhas
+  // Resetar para nenhum acessório/background
   const resetSelections = () => {
     setSelectedItems({
       bigas: null,
       glasses: null,
       hair: null,
-      background: "/img/background/1.png", // Reset para valores padrão
+      background: null,
     });
   };
 
-  // Função para gerar escolhas aleatórias
   const randomizeSelections = () => {
     const randomSelections = Object.keys(items).reduce((acc, category) => {
       const randomItem =
@@ -99,9 +95,8 @@ function App() {
     setSelectedItems(randomSelections);
   };
 
-  // Função para fazer o download da imagem
   const downloadImage = () => {
-    const playerCard = document.querySelector(".player-card"); // Seleciona a área da imagem
+    const playerCard = document.querySelector(".player-card"); 
     html2canvas(playerCard).then((canvas) => {
       const link = document.createElement("a");
       link.download = "chill-guy.png";
@@ -109,8 +104,9 @@ function App() {
       link.click();
     });
   };
+  
   let text = "FaaATGZFZSJWS6MF5jKMhzgecnCuAS7LoVVDNtU7GCJ5"
-  const shortText = `${text.slice(0, 3)}...${text.slice(-3)}`; // Formato abreviado
+  const shortText = `${text.slice(0, 3)}...${text.slice(-3)}`; 
   const copyToClipboard = () => {
     const text = `${tokenCA}`;
     navigator.clipboard.writeText(text)
@@ -149,6 +145,7 @@ function App() {
           </a>
         </div>
       </div>
+
       <div className="select-card">
         {Object.entries(items).map(([category, images]) =>
           images.map((imagePath, key) => (
@@ -162,11 +159,12 @@ function App() {
           ))
         )}
       </div>
+
       <div className="player-card">
         <div className="card-header">
           <img src="/badge.png" alt="" />
           <div className="member-badge">
-            <h1>{tokenName || "k1ngey 🏳️‍🌈"}</h1>
+            <h1>{tokenName || "Your Own Chill Guy"}</h1>
           </div>
           <div className="close-button">
             <img src="/info.png" alt="" />
@@ -175,26 +173,35 @@ function App() {
         <div
           className="player-image"
           style={{
-            backgroundImage: `url(${selectedItems.background})`, // Atualiza o background dinamicamente
+            backgroundImage: selectedItems.background ? `url(${selectedItems.background})` : "none",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
           <div className="attachs">
             <div className="bigas">
-              <img
-                src={selectedItems.bigas || "/img/bigas/2.png"}
-                alt="Bigas"
-              />
+              {selectedItems.bigas && (
+                <img
+                  src={selectedItems.bigas}
+                  alt="Bigas"
+                />
+              )}
             </div>
             <div className="glasses">
-              <img
-                src={selectedItems.glasses || "/img/glasses/1.png"}
-                alt="Glasses"
-              />
+              {selectedItems.glasses && (
+                <img
+                  src={selectedItems.glasses}
+                  alt="Glasses"
+                />
+              )}
             </div>
             <div className="hair">
-              <img src={selectedItems.hair || "/img/hair/1.png"} alt="Hair" />
+              {selectedItems.hair && (
+                <img
+                  src={selectedItems.hair}
+                  alt="Hair"
+                />
+              )}
             </div>
           </div>
           <div className="chillguy">
