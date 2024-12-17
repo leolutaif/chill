@@ -10,7 +10,7 @@ function App() {
     bigas: null,
     glasses: null,
     hair: null,
-    background: null, // Agora começa sem nenhum background
+    background: null, 
   });
   const [tokenName, setTokenName] = useState("");
   const [telegramLink, setTelegramLink] = useState("");
@@ -19,7 +19,6 @@ function App() {
   const [pumpLink, setPumpLink] = useState("");
 
   useEffect(() => {
-    // Fetch data from the API when the component mounts
     fetch("https://apitoreturnca.onrender.com/api/purchaseData", {
       headers: {
         "x-access-key":
@@ -60,14 +59,17 @@ function App() {
       "/img/hair/2.png",
       "/img/hair/3.png",
       "/img/hair/4.png",
+      "/img/hair/5.png",
+      "/img/hair/6.png",
+      "/img/hair/7.png",
     ],
     background: [
       "/img/background/1.png",
       "/img/background/2.png",
       "/img/background/3.png",
       "/img/background/4.png",
-      "/img/background/5.png", // Novo background
-      "/img/background/6.png", // Novo background
+      "/img/background/5.png", 
+      "/img/background/6.png", 
     ],
   };
 
@@ -75,7 +77,6 @@ function App() {
     setSelectedItems((prev) => ({ ...prev, [category]: item }));
   };
 
-  // Resetar para nenhum acessório/background
   const resetSelections = () => {
     setSelectedItems({
       bigas: null,
@@ -96,8 +97,8 @@ function App() {
   };
 
   const downloadImage = () => {
-    const playerCard = document.querySelector(".player-card"); 
-    html2canvas(playerCard).then((canvas) => {
+    const capturableArea = document.querySelector(".capturable-area"); 
+    html2canvas(capturableArea).then((canvas) => {
       const link = document.createElement("a");
       link.download = "chill-guy.png";
       link.href = canvas.toDataURL();
@@ -105,13 +106,13 @@ function App() {
     });
   };
   
-  let text = "FaaATGZFZSJWS6MF5jKMhzgecnCuAS7LoVVDNtU7GCJ5"
-  const shortText = `${text.slice(0, 3)}...${text.slice(-3)}`; 
+  let text = "FaaATGZFZSJWS6MF5jKMhzgecnCuAS7LoVVDNtU7GCJ5";
+  const shortText = `${text.slice(0, 3)}...${text.slice(-3)}`;
   const copyToClipboard = () => {
     const text = `${tokenCA}`;
     navigator.clipboard.writeText(text)
       .then(() => {
-        console.log("copy " + text)
+        console.log("copy " + text);
       })
       .catch((err) => {
         console.error("Erro ao copiar texto: ", err);
@@ -218,6 +219,55 @@ function App() {
           <button className="jelly-button" onClick={randomizeSelections}>
             Random Chill Guy
           </button>
+        </div>
+      </div>
+
+      {/* Área capturável, posicionada fora da tela */}
+      <div 
+        className="capturable-area" 
+        style={{ 
+          position: "absolute",
+          top: "-9999px",
+          left: "-9999px"
+        }}
+      >
+        <div
+          className="player-image"
+          style={{
+            backgroundImage: selectedItems.background ? `url(${selectedItems.background})` : "none",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="attachs">
+            <div className="bigas">
+              {selectedItems.bigas && (
+                <img
+                  src={selectedItems.bigas}
+                  alt="Bigas"
+                />
+              )}
+            </div>
+            <div className="glasses">
+              {selectedItems.glasses && (
+                <img
+                  src={selectedItems.glasses}
+                  alt="Glasses"
+                />
+              )}
+            </div>
+            <div className="hair">
+              {selectedItems.hair && (
+                <img
+                  src={selectedItems.hair}
+                  alt="Hair"
+                />
+              )}
+            </div>
+          </div>
+          <div className="chillguy">
+            <img src="/chillguy.png" alt="Penguin Character" />
+          </div>
         </div>
       </div>
     </div>

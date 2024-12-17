@@ -76,6 +76,7 @@ body {
 .select-card .item img {
   width: 100px;
   transform: scale(1.5);
+  border-radius: 6px;
 }
 
 .player-card {
